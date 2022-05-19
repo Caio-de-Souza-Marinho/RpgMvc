@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "sqTSxz+ij4fNGksdZ7J6d7u7YQzx1JikPNZG6A3TsMEpG8gRBgBvJCZYdZRR2oG1cySscb7Bs4o2KlAzEyvbEg==",
+  "dgSpecHash": "dfXbcv34+6+jbmCoOGnFz6O3NZ/1IOmp3DMAZLmuyPheQ6aQMY4sMlatLuVdx7YzNEFSv5PtKrkjWAS6JPCfdw==",
   "success": true,
   "projectFilePath": "D:\\caio2ds\\ds\\RpgMvc\\RpgMvc.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Aluno\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.15\\microsoft.aspnetcore.jsonpatch.5.0.15.nupkg.sha512",
+    "C:\\Users\\Aluno\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.15\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.15.nupkg.sha512",
+    "C:\\Users\\Aluno\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Aluno\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\Aluno\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
