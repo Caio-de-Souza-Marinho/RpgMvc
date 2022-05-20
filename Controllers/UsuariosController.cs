@@ -6,5 +6,11 @@ namespace RpgMvc.Controllers
     {
         public string uriBase = "xyz/Usuarios/";
         //xyz tem que ser substituido pelo endereço da API.
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View("CadastrarUsuario");
+        }
     }
 }

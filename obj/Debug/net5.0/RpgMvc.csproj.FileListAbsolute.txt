@@ -37,3 +37,7 @@ D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\ref\RpgMvc.dll
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\RpgMvc.pdb
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\RpgMvc.genruntimeconfig.cache
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\RpgMvc.csproj.CopyComplete
+D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
