@@ -88,3 +88,4 @@ C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\RpgMvc.dll
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\ref\RpgMvc.dll
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\RpgMvc.pdb
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\RpgMvc.genruntimeconfig.cache
+C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Usuarios\AutenticarUsuario.cshtml.g.cs
