@@ -42,3 +42,4 @@ D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dl
 D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\caio2ds\ds\RpgMvc\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Usuarios\CadastrarUsuario.cshtml.g.cs
+D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartialRpg.cshtml.g.cs
