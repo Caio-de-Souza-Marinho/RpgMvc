@@ -13,12 +13,15 @@ namespace RpgMvc.Controllers
         public string uriBase = "http://localhost:5000/Usuarios/";
         //xyz tem que ser substituido pelo endereço da API.
 
+
+        //Método que carregará a view inicialmente
         [HttpGet]
         public ActionResult Index()
         {
             return View("CadastrarUsuario");
         }
 
+        //Método para registrar usuários
         [HttpPost]
         public async Task<ActionResult> RegistrarAsync(UsuarioViewModel u)
         {
@@ -48,6 +51,13 @@ namespace RpgMvc.Controllers
                 TempData["MensagemErro"] = ex.Message;
                 return RedirectToAction("Index");
             }
+        }
+
+        //Método para abrir a view de login
+        [HttpGet]
+        public ActionResult IndexLogin()
+        {
+            return View("AutenticarUsuario");
         }
 
 
