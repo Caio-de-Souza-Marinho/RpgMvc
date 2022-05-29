@@ -15669,6 +15669,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\etec\\2modulo\\DS\\csharp\\Aula04\\RpgMvc\\Views\\Personagens\\Details.cshtml",
+      "TargetPath": "Views\\Personagens\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\etec\\2modulo\\DS\\csharp\\Aula04\\RpgMvc\\Views\\Personagens\\Index.cshtml",
       "TargetPath": "Views\\Personagens\\Index.cshtml",
       "FileKind": "mvc"
