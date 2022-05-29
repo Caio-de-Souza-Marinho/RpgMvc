@@ -73,5 +73,11 @@ namespace RpgMvc.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
     }
 }
