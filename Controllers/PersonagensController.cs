@@ -131,12 +131,12 @@ namespace RpgMvc.Controllers
                 TempData["MensagemErro"] = ex.Message;
                 return RedirectToAction("Index");
             }
-        }    
-    
+        }
+
         [HttpPost]
         public async Task<ActionResult> EditAsync(PersonagemViewModel p)
         {
-            try 
+            try
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
@@ -163,11 +163,11 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("Index");
             }
         }
-    
+
         [HttpGet]
         public async Task<ActionResult> DeleteAsync(int id)
         {
-            try 
+            try
             {
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
@@ -191,17 +191,17 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("Index");
             }
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
