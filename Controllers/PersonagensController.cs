@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace RpgMvc.Controllers
 {
-    public class PersonagensController: Controller
+    public class PersonagensController : Controller
     {
         public string uriBase = "http://localhost:5000/Personagens/";
         //xyz deve ser substituido pelo nome do seu site da API
@@ -27,7 +27,7 @@ namespace RpgMvc.Controllers
                 HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     List<PersonagemViewModel> listaPersonagens = await Task.Run(() =>
                         JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
@@ -55,10 +55,10 @@ namespace RpgMvc.Controllers
 
                 var content = new StringContent(JsonConvert.SerializeObject(p));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                HttpResponseMessage response = await httpClient.PostAsync(uriBase, content);  
+                HttpResponseMessage response = await httpClient.PostAsync(uriBase, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     TempData["Mensagem"] = string.Format("Personagem {0}, Id {1} salvo com sucesso!", p.Nome, serialized);
                     return RedirectToAction("Index");
@@ -87,10 +87,10 @@ namespace RpgMvc.Controllers
                 HttpClient httpClient = new HttpClient();
                 string token = HttpContext.Session.GetString("SessionTokenUsuario");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());  
+                HttpResponseMessage response = await httpClient.GetAsync(uriBase + id.ToString());
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     PersonagemViewModel p = await Task.Run(() => JsonConvert.DeserializeObject<PersonagemViewModel>(serialized));
                     return View(p);
@@ -98,7 +98,7 @@ namespace RpgMvc.Controllers
                 else
                     throw new System.Exception(serialized);
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 TempData["MensagemErro"] = ex.Message;
                 return RedirectToAction("Index");
