@@ -94,3 +94,4 @@ D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Index.cshtml.g.cs
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Index.cshtml.g.cs
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Create.cshtml.g.cs
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Details.cshtml.g.cs
+C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Edit.cshtml.g.cs
