@@ -164,7 +164,33 @@ namespace RpgMvc.Controllers
             }
         }
     
-    
+        [HttpGet]
+        public async Task<ActionResult> DeleteAsync(int id)
+        {
+            try 
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + id.ToString());
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    TempData["Mensagem"] = string.Format("Personagem Id {0} removido com sucesso!", id);
+                    return RedirectToAction("Index");
+                }
+                else
+                    throw new System.Exception(serialized);
+
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
     
     
     
