@@ -83,48 +83,54 @@ namespace RpgMvc.Controllers
         }
     }
     
-    // [HttpGet]
-    // public async Task<ActionResult> IndexHabilidadesAsync()
-    // {
-    //     try
-    //     {
-    //         HttpClient httpClient = new HttpClient();
-    //         string token = HttpContext.Session.GetString("SessionTokenUsuario");
-    //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+    [HttpGet]
+    public async Task<ActionResult> IndexHabilidadesAsync()
+    {
+        try
+        {
+            HttpClient httpClient = new HttpClient();
+            string token = HttpContext.Session.GetString("SessionTokenUsuario");
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+            string uriBuscaPersonagens = "http://localhost:5000/Personagens/GetAll";  //xyz --> Seu endereço de API             
+            HttpResponseMessage response = await httpClient.GetAsync(uriBuscaPersonagens);
+            string serialized = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                List<PersonagemViewModel> listaPersonagens = await Task.Run(() =>
+                    JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
+
+                ViewBag.ListaAtacantes = listaPersonagens;
+                ViewBag.ListaOponentes = listaPersonagens;
+                //return View(); //Remova esta linha
+            }
+            else
+                throw new System.Exception(serialized);
+
+            string uriBuscaHabilidades = "http://localhost:5000/PersonagemHabilidades/GetHabilidades";//xyz --> Seu endereço da API
             
-    //         string uriBuscaPersonagens = "http://localhost:5000/Personagens/GetAll"; //SUBSTITUIR SE NECESSÁRIO
-    //         HttpResponseMessage response = await httpClient.GetAsync(uriBuscaPersonagens);
-    //         string serialized = await response.Content.ReadAsStringAsync();
+            
+            response = await httpClient.GetAsync(uriBuscaHabilidades);
+            serialized = await response.Content.ReadAsStringAsync();
 
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                List<HabilidadeViewModel> listaHabilidades = await Task.Run(() =>
+                    JsonConvert.DeserializeObject<List<HabilidadeViewModel>>(serialized));
+                ViewBag.ListaHabilidades = listaHabilidades;
+            }
+            else
+                throw new System.Exception(serialized);
 
-    //         if(response.StatusCode == System.Net.HttpStatusCode.OK)
-    //         {
-    //             List<PersonagemViewModel> listaPersonagens = await Task.Run(() =>
-    //                 JsonConvert.DeserializeObject<List<PersonagemViewModel>>(serialized));
-
-                
-    //             ViewBag.ListaAtacantes = listaPersonagens;
-    //             ViewBag.ListaOponentes = listaPersonagens;
-    //         }
-    //         else
-    //             throw new System.Exception(serialized);
-
-    //         string uriBuscaHabilidades = "http://localhost:5000/PersonagemHabilidades/GetHabilidades";
-    //         response = await httpClient.GetAsync(uriBuscaHabilidades);
-    //         serialized = await response.Content.ReadAsStringAsync();
-
-    //         if(response.StatusCode == System.Net.HttpStatusCode.OK)
-    //         {
-    //             List<HabilidadeViewModel>
-    //         }
-    //     }
-    //     catch(System.Exception ex)
-    //     {
-    //         TempData["MensagemErro"] == ex.Message;
-    //         return RedirectToAction("Index");
-    //     }
-    // }
+            return View("IndexHabilidades");
+        }
+        catch(System.Exception ex)
+        {
+            TempData["MensagemErro"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+    }
 
 
 
