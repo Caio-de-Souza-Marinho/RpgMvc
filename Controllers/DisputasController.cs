@@ -11,7 +11,7 @@ namespace RpgMvc.Controllers
 {
     public class DisputasController : Controller
     {
-        public string uriBase = "http://localhost:5000/Disputas";
+        public string uriBase = "http://localhost:5000/Disputas/";
         //xyz deve ser substituido pelo nome do site na API
 
     [HttpGet]
@@ -54,6 +54,34 @@ namespace RpgMvc.Controllers
         }
     }
 
+    [HttpPost]
+    public async Task<ActionResult> IndexAsync(DisputaViewModel disputa)
+    {
+        try
+        {
+            HttpClient httpClient = new HttpClient();
+                string uriComplementar = "Arma";
+
+                var content = new StringContent(JsonConvert.SerializeObject(disputa));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                HttpResponseMessage response = await httpClient.PostAsync(uriBase + uriComplementar, content);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    disputa = await Task.Run(() => JsonConvert.DeserializeObject<DisputaViewModel>(serialized));
+                    TempData["Mensagem"] = disputa.Narracao;
+                    return RedirectToAction("Index", "Personagens");
+                }
+                else
+                    throw new System.Exception(serialized);
+        }
+        catch(System.Exception ex)
+        {
+            TempData["MensagemErro"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+    }
 
 
 
