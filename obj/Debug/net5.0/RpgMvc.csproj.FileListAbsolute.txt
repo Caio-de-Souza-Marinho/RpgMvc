@@ -99,3 +99,4 @@ D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Create.cshtml.g.cs
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Details.cshtml.g.cs
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Personagens\Edit.cshtml.g.cs
 D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Disputas\Index.cshtml.g.cs
+D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Disputas\IndexHabilidades.cshtml.g.cs

@@ -103,7 +103,6 @@ namespace RpgMvc.Controllers
 
                 ViewBag.ListaAtacantes = listaPersonagens;
                 ViewBag.ListaOponentes = listaPersonagens;
-                //return View(); //Remova esta linha
             }
             else
                 throw new System.Exception(serialized);
