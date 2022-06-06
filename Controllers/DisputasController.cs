@@ -189,6 +189,30 @@ namespace RpgMvc.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<ActionResult> ApagarDisputasAsync()
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                string uriComplementar = "ApagarDisputas";
+
+                HttpResponseMessage response = await httpClient.DeleteAsync(uriBase + uriComplementar);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    TempData["Mensagem"] = "Disputas apagadas com sucesso.";
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;   
+            }
+            return RedirectToAction("IndexDisputas", "Disputas");
+        }
 
 
 
