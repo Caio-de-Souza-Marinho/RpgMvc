@@ -40,7 +40,37 @@ namespace RpgMvc.Controllers
                 return RedirectToAction("Index");
             }
         }
-    
+
+        [HttpGet("Delete/{habilidadeId}/{personagemId}")]
+        public async Task<ActionResult> DeleteAsync(int habilidadeId, int personagemId)
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string uriComplementar = "DeletePersonagemHabilidade";
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                PersonagemHabilidadeViewModel ph = new PersonagemHabilidadeViewModel();
+                ph.HabilidadeId = habilidadeId;
+                ph.PersonagemId = personagemId;
+
+                var content = new StringContent(JsonConvert.SerializeObject(ph));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                HttpResponseMessage response = await httpClient.PostAsync(uriBase + uriComplementar, content);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                    TempData["Mensagem"] = "Habilidade removida com sucesso";
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+            }
+            return RedirectToAction("Index", new {Id = personagemId});
+        }
     
     
     
