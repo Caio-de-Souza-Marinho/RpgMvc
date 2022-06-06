@@ -296,6 +296,38 @@ namespace RpgMvc.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public async Task<ActionResult> ZerarRankingAsync(int id)
+        {
+            try
+            {
+                string uriComplementar = "ZerarRanking";
+                PersonagemViewModel p = new PersonagemViewModel();
+                p.Id = id;   
+
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                var content = new StringContent(JsonConvert.SerializeObject(p));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase + uriComplementar, content);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    TempData["Mensagem"] = "Ranking zerado com sucesso";
+                }
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MesagemErro"] = ex.Message;
+            }
+            return RedirectToAction("Index");
+        }
 
 
 
