@@ -238,7 +238,30 @@ namespace RpgMvc.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<ActionResult> ZerarRankingRestaurarVidasAsync()
+        {
+            try
+            {
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+                string uriComplementar = "ZerarRankingRestaurarVidas";
+                HttpResponseMessage response = await httpClient.PutAsync(uriBase + uriComplementar, null);
+                string serialized = await response.Content.ReadAsStringAsync();
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    TempData["Mensagem"] = "Ranking zerado e pontos de vida restaurados com sucesso";
+                else
+                    throw new System.Exception(serialized);
+            }
+            catch (System.Exception ex)
+            {
+                TempData["MesagemErro"] = ex.Message;
+            }
+            return RedirectToAction("Index");
+        }
 
 
 
