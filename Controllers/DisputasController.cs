@@ -131,7 +131,33 @@ namespace RpgMvc.Controllers
         }
     }
 
+    [HttpPost]
+    public async Task<ActionResult> IndexHabilidadesAsync(DisputaViewModel disputa)
+    {
+        try
+        {
+            HttpClient httpClient = new HttpClient();
+            string uriComplementar = "Habilidade";
+            var content = new StringContent(JsonConvert.SerializeObject(disputa));
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await httpClient.PostAsync(uriBase + uriComplementar, content);
+            string serialized = await response.Content.ReadAsStringAsync();
 
+            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                disputa = await Task.Run(() => JsonConvert.DeserializeObject<DisputaViewModel>(serialized));
+                TempData["Mensagem"] = disputa.Narracao;
+                return RedirectToAction("Index", "Personagens");
+            }
+            else
+                throw new System.Exception(serialized);
+        }
+        catch(System.Exception ex)
+        {
+            TempData["MensagemErro"] = ex.Message;
+            return RedirectToAction("Index");
+        }
+    }
 
 
 
