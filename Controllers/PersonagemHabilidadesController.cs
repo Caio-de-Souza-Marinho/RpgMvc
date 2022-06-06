@@ -12,7 +12,7 @@ namespace RpgMvc.Controllers
     public class PersonagemHabilidadesController : Controller
     {
         public string uriBase = "http://localhost:5000/PersonagemHabilidades/";
-    
+
         [HttpGet("PersonagemHabilidades/{id}")]
         public async Task<ActionResult> DeletAsync(int id)
         {
@@ -28,13 +28,13 @@ namespace RpgMvc.Controllers
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     List<PersonagemHabilidadeViewModel> lista = await Task.Run(() => JsonConvert.DeserializeObject<List<PersonagemHabilidadeViewModel>>(serialized));
-                    
+
                     return View(lista);
                 }
-                else 
+                else
                     throw new System.Exception(serialized);
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 TempData["MensagemErro"] = ex.Message;
                 return RedirectToAction("Index");
@@ -60,7 +60,7 @@ namespace RpgMvc.Controllers
                 HttpResponseMessage response = await httpClient.PostAsync(uriBase + uriComplementar, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     TempData["Mensagem"] = "Habilidade removida com sucesso";
                 else
                     throw new System.Exception(serialized);
@@ -69,9 +69,9 @@ namespace RpgMvc.Controllers
             {
                 TempData["MensagemErro"] = ex.Message;
             }
-            return RedirectToAction("Index", new {Id = personagemId});
+            return RedirectToAction("Index", new { Id = personagemId });
         }
-    
+
         [HttpGet]
         public async Task<ActionResult> CreateAsync(int id, string nome)
         {
@@ -95,13 +95,13 @@ namespace RpgMvc.Controllers
 
                 return View(ph);
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 TempData["MensagemErro"] = ex.Message;
                 return RedirectToAction("Create", new { id, nome });
             }
         }
-    
+
         [HttpPost]
         public async Task<ActionResult> CreateAsync(PersonagemHabilidadeViewModel ph)
         {
@@ -116,49 +116,49 @@ namespace RpgMvc.Controllers
                 HttpResponseMessage response = await httpClient.PostAsync(uriBase, content);
                 string serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     TempData["Mensagem"] = "Habilidade cadastrada com sucesso";
                 else
                     throw new System.Exception(serialized);
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 TempData["MensagemErro"] = ex.Message;
             }
-            return RedirectToAction("Index", new { id = ph.PersonagemId});
+            return RedirectToAction("Index", new { id = ph.PersonagemId });
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

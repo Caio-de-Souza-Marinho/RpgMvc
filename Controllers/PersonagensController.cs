@@ -221,7 +221,7 @@ namespace RpgMvc.Controllers
 
                 serialized = await response.Content.ReadAsStringAsync();
 
-                if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     disputa = await Task.Run(() => JsonConvert.DeserializeObject<DisputaViewModel>(serialized));
                     TempData["Mensagem"] = string.Join("<br/>", disputa.Resultados);

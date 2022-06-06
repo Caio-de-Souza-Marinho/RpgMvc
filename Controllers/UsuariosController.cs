@@ -38,7 +38,7 @@ namespace RpgMvc.Controllers
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    TempData["Mensagem"] = string.Format("Usuário {0} registrado com sucesso! Faça o login para acessar.", u.Username );
+                    TempData["Mensagem"] = string.Format("Usuário {0} registrado com sucesso! Faça o login para acessar.", u.Username);
                     return View("AutenticarUsuario");
                 }
                 else
@@ -78,7 +78,7 @@ namespace RpgMvc.Controllers
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     HttpContext.Session.SetString("SessionTokenUsuario", serialized);
-                    TempData["Mensagem"]  = string.Format("Bem-vindo {0}!!!", u.Username);
+                    TempData["Mensagem"] = string.Format("Bem-vindo {0}!!!", u.Username);
                     return RedirectToAction("Index", "Personagens");
                 }
                 else
