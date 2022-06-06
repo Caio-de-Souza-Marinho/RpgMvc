@@ -72,7 +72,35 @@ namespace RpgMvc.Controllers
             return RedirectToAction("Index", new {Id = personagemId});
         }
     
-    
+        [HttpGet]
+        public async Task<ActionResult> CreateAsync(int id, string nome)
+        {
+            try
+            {
+                string uriComplementar = "GetHabilidades";
+                HttpClient httpClient = new HttpClient();
+                string token = HttpContext.Session.GetString("SessionTokenUsuario");
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                HttpResponseMessage response = await httpClient.GetAsync(uriBase + uriComplementar);
+
+                string serialized = await response.Content.ReadAsStringAsync();
+                List<HabilidadeViewModel> habilidades = await Task.Run(() => JsonConvert.DeserializeObject<List<HabilidadeViewModel>>(serialized));
+                ViewBag.ListaHabilidades = habilidades;
+
+                PersonagemHabilidadeViewModel ph = new PersonagemHabilidadeViewModel();
+                ph.Personagem = new PersonagemViewModel();
+                ph.Habilidade = new HabilidadeViewModel();
+                ph.PersonagemId = id;
+                ph.Personagem.Nome = nome;
+
+                return View(ph);
+            }
+            catch(System.Exception ex)
+            {
+                TempData["MensagemErro"] = ex.Message;
+                return RedirectToAction("Create", new { id, nome });
+            }
+        }
     
     
     
