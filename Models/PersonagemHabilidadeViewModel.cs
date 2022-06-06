@@ -1,6 +1,6 @@
 namespace RpgMvc.Models
 {
-    public class PersonagemHabilidadesViewModel
+    public class PersonagemHabilidadeViewModel
     {
         public int PersonagemId { get; set; }
         public PersonagemViewModel Personagem { get; set; }
