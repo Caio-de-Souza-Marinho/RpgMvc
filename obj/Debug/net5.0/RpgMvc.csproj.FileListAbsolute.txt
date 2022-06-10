@@ -105,3 +105,6 @@ C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Disputas\In
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\PersonagemHabilidades\Index.cshtml.g.cs
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\PersonagemHabilidades\Create.cshtml.g.cs
 C:\etec\2modulo\DS\csharp\Aula04\RpgMvc\obj\Debug\net5.0\Razor\Views\Disputas\IndexDisputas.cshtml.g.cs
+D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\Disputas\IndexDisputas.cshtml.g.cs
+D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\PersonagemHabilidades\Create.cshtml.g.cs
+D:\caio2ds\ds\RpgMvc\obj\Debug\net5.0\Razor\Views\PersonagemHabilidades\Index.cshtml.g.cs
